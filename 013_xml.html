@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>013 xml</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div class="canvas"></div>
+    <script>
+        // xml
+        const canvas = d3.select(".canvas");
+
+        // document이기 때문에 노드탐색하듯이 찾아야
+        d3.xml("data/data5.xml")
+            .then(function (data) {
+                console.log(data)
+                console.log(data.documentElement);
+                console.log(data.documentElement.getElementsByTagName("row")); // array
+                console.log(data.documentElement.getElementsByTagName("row")[0]);
+
+                new Array(data.documentElement.getElementsByTagName("row")).forEach(e => {
+                    console.log(e);
+                    console.log(e[0].childNodes);
+                });
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+    </script>
+</body>
+
+</html>
