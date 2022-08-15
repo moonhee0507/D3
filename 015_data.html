@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>015 data</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // domain은 변환 전 값이고 range는 변환 후 값의 범위
+        const f1 = d3.scaleLinear().range([0, 100]).domain([0, 500]);
+        console.log(f1(250));
+        console.log(f1(0));
+        console.log(f1(500));
+        console.log(f1(100));
+        console.log(f1(1000));
+
+        crayons = d3.scaleLinear()
+            .domain([-1, 0, 1])
+            .range(["orange", "white", "green"])
+        console.log(crayons(0.3));
+
+        const f = d3.scaleLinear().range([200, 500]).domain([20000000, 50000000]);
+        console.log(f(25000000));
+
+        // scaleBand(): 숫자가 아니라 키값으로 찾을 수 있게 해줌
+        const m = d3.scaleBand().domain(['one', 'two', 'three', 'four']).range([0, 100]);
+        console.log(m('one'));
+        console.log(m('two'));
+        console.log(m('three'));
+        console.log(m('four'));
+
+        console.log(m.bandwidth());
+    </script>
+</body>
+
+</html>
